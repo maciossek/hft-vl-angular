@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>HFT IPR #9 Angular JS & TypeScript</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/atom-one-dark.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+	</head>
+	<!-- https://media.giphy.com/media/ZsQVh4CykCXUQ/giphy.gif -->
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-size="cover" data-background-image="https://media.giphy.com/media/MgIwG5ncUDWp2/giphy.gif">
+					<h1 class="title">IPR</h1>
+					<h3 class="title">Angular & TypeScript</h3>
+				</section>
+				<section>
+					<section data-background-size="cover" data-background-image="https://media.giphy.com/media/nrN8fUJ4EZn5m/giphy.gif">
+						<h1 class="title">SPA</h1>
+						<h3 class="title">Single Page Application</h3>
+					</section>
+					<section>
+						<h2>Sinn und Zweck SPAs</h2>
+						<ul>
+							<li>Neues Laden nicht notwendig -> Kleinere Requests</li>
+							<li>Bessere User-Interaction</li>
+							<li>Offline fähige WebApps via Cache</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Allgemeines Angular</h2>
+						<ul>
+							<li>Single Page Application (SPA)</li>
+							<li>Version 1 unterscheidet sich SEHR von 2, 4 und 5</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Angular 👍</h2>
+						<ul>
+							<li>AngularWay</li>
+							<li>Komplett</li>
+							<li>Technologie von Google</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Angular 👎</h2>
+						<ul>
+							<li>Starke Konventionen bedeuten erschwertes Lernen</li>
+							<li>TypeScript mehr oder minder Pflicht</li>
+							<li>Relativ groß (~500kB)</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section data-background-size="cover" data-background-image="https://media.giphy.com/media/Jalikml2XiUgw/giphy.gif">
+						<h1 class="title">TypeScript</h1>
+					</section>
+					<section>
+						<h2>Allgemeines TypeScript</h2>
+						<ul>
+							<li>Microsoft Techologie</li>
+							<li>Typisierung von JavaScript</li>
+							<li>Kompiliert in normales JavaScript</li>
+							<li>Unterstützung in IDEs und Editoren</li>
+							<li>Alternative: FlowType von Facebook</li>
+						</ul>
+					</section>
+					<section>
+						<h2>TypeScript 👍</h2>
+						<ul>
+							<li>Nach wie vor möglich normales JavaScript zu schreiben</li>
+							<li>Man kann nur die Teile typisieren die einem wichtig sind</li>
+							<li>Weiterentwicklung gewährleistet durch Microsoft</li>
+							<li>Gute Dokumentation & Online Editor</li>
+						</ul>
+					</section>
+					<section>
+						<h2>TypeScript 👎</h2>
+						<ul>
+							<li>Syntax ggf. schwerer lesbar</li>
+							<li>Weniger ESNext Features als Babel, o. ä.</li>
+							<li>Any Type als allgemein Lösung</li>
+							<li>Custom workarounds müssen typisiert oder ignoriert werden</li>
+						</ul>
+					</section>
+					<section>
+						<a href="https://www.typescriptlang.org/play/index.html" target="_blank">TypeScript Playground</a>
+						<pre><code class="js" data-trim data-noescape>
+							function greeter(person: string) {
+							    return "Hello, " + person;
+							}
+
+							let user = "Jane User";
+
+							document.body.innerHTML = greeter(user);
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Let's Angular</h2>
+						<pre><code class="bash" data-trim data-noescape>
+							npm install -g @angular/cli
+							ng new angular-tour-of-heroes
+							cd angular-tour-of-heroes
+							ng serve --open
+						</code></pre>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				backgroundTransition: 'slide',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
+transition
