@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>HFT IPR #9 Angular JS & TypeScript</title>
+		<title>HFT IPR Angular JS & TypeScript</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/custom.css">
@@ -38,7 +38,7 @@
 						<h3 class="title">Single Page Application</h3>
 					</section>
 					<section>
-						<h2>Sinn und Zweck SPAs</h2>
+						<h3>Sinn und Zweck SPAs</h3>
 						<ul>
 							<li>Neues Laden nicht notwendig -> Kleinere Requests</li>
 							<li>Bessere User-Interaction</li>
@@ -46,14 +46,18 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Allgemeines Angular</h2>
+						<h3>Was ist ein Framework?</h3>
+						<p class="fragment fade-in">Ein Framework (englisch für Rahmenstruktur) ist ein Programmiergerüst, das in der Softwaretechnik, insbesondere im Rahmen der objektorientierten Softwareentwicklung sowie bei komponentenbasierten Entwicklungsansätzen, verwendet wird. Im allgemeineren Sinne bezeichnet man mit Framework auch einen Ordnungsrahmen.</p>
+					</section>
+					<section>
+						<h3>Allgemeines Angular</h3>
 						<ul>
 							<li>Single Page Application (SPA)</li>
 							<li>Version 1 unterscheidet sich SEHR von 2, 4 und 5</li>
 						</ul>
 					</section>
 					<section>
-						<h2>Angular 👍</h2>
+						<h3>Angular 👍</h3>
 						<ul>
 							<li>AngularWay</li>
 							<li>Komplett</li>
@@ -61,7 +65,7 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Angular 👎</h2>
+						<h3>Angular 👎</h3>
 						<ul>
 							<li>Starke Konventionen bedeuten erschwertes Lernen</li>
 							<li>TypeScript mehr oder minder Pflicht</li>
@@ -74,7 +78,7 @@
 						<h1 class="title">TypeScript</h1>
 					</section>
 					<section>
-						<h2>Allgemeines TypeScript</h2>
+						<h3>Allgemeines TypeScript</h3>
 						<ul>
 							<li>Microsoft Techologie</li>
 							<li>Typisierung von JavaScript</li>
@@ -84,7 +88,7 @@
 						</ul>
 					</section>
 					<section>
-						<h2>TypeScript 👍</h2>
+						<h3>TypeScript 👍</h3>
 						<ul>
 							<li>Nach wie vor möglich normales JavaScript zu schreiben</li>
 							<li>Man kann nur die Teile typisieren die einem wichtig sind</li>
@@ -93,7 +97,7 @@
 						</ul>
 					</section>
 					<section>
-						<h2>TypeScript 👎</h2>
+						<h3>TypeScript 👎</h3>
 						<ul>
 							<li>Syntax ggf. schwerer lesbar</li>
 							<li>Weniger ESNext Features als Babel, o. ä.</li>
@@ -104,7 +108,7 @@
 					<section>
 						<a href="https://www.typescriptlang.org/play/index.html" target="_blank">TypeScript Playground</a>
 						<pre><code class="js" data-trim data-noescape>
-							function greeter(person: string) {
+							function greeter(person: string): any {
 							    return "Hello, " + person;
 							}
 
@@ -116,14 +120,291 @@
 				</section>
 				<section>
 					<section>
-						<h2>Let's Angular</h2>
+						<h3>Let's Angular</h3>
 						<pre><code class="bash" data-trim data-noescape>
 							npm install -g @angular/cli
 							ng new angular-tour-of-heroes
 							cd angular-tour-of-heroes
 							ng serve --open
 						</code></pre>
+						</section>
+						<section>
+							<h3>Angular Components</h3>
+							<small>Components sind die fundamentalen Blöcke aus denen Angular Anwendungen bestehen. Sie zeigen Daten auf dem Bildschirm an, hören auf Benutzereingaben und führen eine Aktion aus die auf den Eingaben basieren</small>
+							<br /> <br />
+
+							<small><ul>
+								<li>CSS Datei</li>
+								<li>Template Datei</li>
+								<li>component.ts Datei</li>
+							</ul></small>
+						</section>
+						<section>
+							<h3>Angular Templates</h3>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;h1&gt;{{title}}&lt;/h1&gt;
+							</code></pre>
+						</section>
+						<section>
+							<iframe style="width: 100%; height: 600px" src="https://stackblitz.com/angular/ygkropdndej?ctl=1&embed=1&file=src/main.ts" frameborder="0" allowfullscren="allowfullscren"></iframe>
+						</section>
+						<section>
+							<h3>Neue Component hinzufügen</h3>
+							<pre><code class="bash" data-trim data-noescape>
+								ng generate component heroes
+							</code></pre>
+							legt den Ordner src/app/heroes/ an
+						</section>
+						<section>
+							<pre><code class="js" data-trim data-noescape>
+								import { Component, OnInit } from '@angular/core';
+								import { Hero } from '../hero';
+
+								@Component({
+								  selector: 'app-heroes',
+								  templateUrl: './heroes.component.html',
+								  styleUrls: ['./heroes.component.css']
+								})
+								export class HeroesComponent implements OnInit {
+								  hero: Hero = {
+								    id: 1,
+								    name: 'Windstorm'
+								  };
+
+								  constructor() { }
+
+								  ngOnInit() {
+								  }
+
+								}
+							</code></pre>
+						</section>
+						<section>
+							<h3>@Component</h3>
+							<small><code>@Component</code> ist eine Decorator Funktion, die die Metadaten einer Komponente definiert</small>
+
+							<small>Die CLI generiert die folgenden drei metadaten Eigenschaften:</small>
+							<small><ol>
+								<li><code>selector</code> — der CSS Element selector der Komponente</li>
+								<li><code>templateUrl</code> — der Ort an dem das Template für die Komponente zu finden ist.</li>
+								<li><code>styleUrls</code> — private CSS Eigenschaften für die Komponente sind hier zu referenzieren</li>
+							</ol></small>
+						</section>
+						<section>
+							<p>src/app/app.component.html</p>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;h1&gt;{{title}}&lt;/h1&gt;
+								&lt;app-heroes&gt;&lt;/app-heroes&gt;
+							</code></pre>
+						</section>
+						<section>
+							<h3>Hero editieren: Two-way binding</h3>
+							<code>[(ngModel)]</code> ist Angular's two-way data binding Syntax.
+							<small>Die Property <code>hero.name</code> wird auf die HTML Textbox "gebindet", damit können die Daten in beide Richtungen fließen: Von <code>hero.name</code> in die Textbox, sowie von der Textbox zurück in <code>hero.name</code> </small>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;div&gt;
+								    &lt;label&gt;name:
+								      &lt;input [(ngModel)]="hero.name" placeholder="name"&gt;
+								    &lt;/label&gt;
+								&lt;/div&gt;
+							</code></pre>
+						</section>
+						<section>
+							<iframe style="width: 100%; height: 600px" src="https://stackblitz.com/angular/ygkropdndej?ctl=1&embed=1&file=src/main.ts" frameborder="0" allowfullscren="allowfullscren"></iframe>
+						</section>
+						<section>
+							<h3>Eine Liste anzeigen</h3>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;li *ngFor="let hero of heroes"&gt;
+							</code></pre>
+						</section>
+						<section>
+							<h3>Event-Binding</h3>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;li *ngFor="let hero of heroes" (click)="onSelect(hero)"&gt;
+							</code></pre>
+						</section>
+						<section>
+							<h3>Bedinungen innerhalb von Templates</h3>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;div *ngIf="selectedHero"&gt;
+							</code></pre>
+						</section>
+						<section>
+							<h3>CSS Class-Binding</h3>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;span [class.selected]="hero === selectedHero" /&gt;
+							</code></pre>
+						</section>
+						<section>
+							<iframe style="width: 100%; height: 600px" src="https://stackblitz.com/angular/yvorrgknrey?ctl=1&embed=1&file=src/main.ts" frameborder="0" allowfullscren="allowfullscren"></iframe>
+						</section>
+						<section>
+							<h3>Master/Detail Components</h3>
+							<small>Alle Features in einer Komponente zu implenetieren macht größere Anwendungen unwartbar. Man splittet daher große Komponenten in kleinere Sub-Komponenten. Jede einzelne hat dann jeweils eine Aufgabe.</small>
+							<small> Die <code>HeroesComponent</code> zeigt demnach nur die Liste an Heroes an. Die <code>HeroDetailsComponent</code> zeigt die einzelnen Details eines Helden an.</small>
+						</section>
+						<section>
+							<h3>Hinzufügen der @Input() hero property</h3>
+							<pre><code class="js" data-trim data-noescape>
+								@Input() hero: Hero;
+							</code></pre>
+							<small>Die neue Klassenvaraible hero muss eine <code>Input Property</code> sein und ist daher mit dem <code>@Input</code> Dekorator versehen. Die externe <code>HeroesComponent</code> wird <code>hero</code> binden.</small>
+							<pre><code class="html" data-trim data-noescape>
+								&lt;app-hero-detail [hero]="selectedHero"&gt;&lt;/app-hero-detail&gt;
+							</code></pre>
+							<small><code>[hero]="selectedHero"</code> ist one-way Databinding</small>
+						</section>
+						<section>
+							<h3>Angular Services</h3>
+							<small>Components sollten sich nicht um das holen und senden von Daten kümmern. Es gibt daher das Konstrukt eines Service innerhalb von Angular. Derzeit verwenden wir Fake Daten in der HeroesComponent.</small>
+							<small>Services werden auch verwendet um Funktionalitäten zwischen mehreren Komponenten bereitzustellen.</small>
+
+							<pre><code class="bash" data-trim data-noescape>
+								ng generate service hero
+							</code></pre>
+						</section>
+						<section>
+							<h3>Hero Service</h3>
+							<pre><code class="js" data-trim data-noescape>
+								import { Injectable } from '@angular/core';
+								import { Hero } from './hero';
+								import { HEROES } from './mock-heroes';
+
+								@Injectable()
+								export class HeroService {
+
+								  constructor() { }
+
+								  getHeroes(): Hero[] {
+								    return HEROES;
+								  }
+								}
+							</code></pre>
+						</section>
+						<section>
+							<h3>Provide Hero Service</h3>
+							<small>Damit der Service via Depedency Injection verwendet werden kann, muss Angular informiert werden, dass dieser Service bereitgestellt wird.</small>
+							<small>Der Service kann direkt via app.module oder innerhalb einer Component bereitgestellt werden.</small>
+						</section>
+						<section>
+							<h3>Observables</h3>
+							<small>Die <code>getHeroes</code> Methode ist derzeit noch synchron. In einer realen App würden die Daten von einem Server kommen. Man kann hier Callbacks oder Promises verwenden. Angular's <code>HttpClient.get</code> liefert ein <code>Observable</code> zurück, daher ergibt es Sinn an dieser Stelle mit Observables zu arbeiten.</small>
+						</section>
+						<section>
+							<h3>Observables? Reactive Programming!</h3>
+							<small>
+								Reactive Programming bedeutet Programmieren mit asynchrones Datenstreams. Ein Klickevent ist in Wirklichkeit ein asynchroner Event Stream, den man beobachten (observe) kann und extra Action / Effekte einbauen kann.
+								Reactive bedeutet dann, dass aus jeglichen Konstrukten Daten Streams werden, also nicht nur typische click und hover Events. Alles kann ein Stream sein: Variablen, User Inputs, Eigentschaften, Daten Strukturen, usw. Ein Realbeispiel ist der Twitter Account, dessen Stream man beobachtet und entsprechend darauf reagiert.
+							</small>
+						</section>
+						<section>
+							<h3>getHeroes Methode</h3>
+							<pre><code class="js" data-trim data-noescape>
+								import { Observable } from 'rxjs/Observable';
+								import { of } from 'rxjs/observable/of';
+
+								…
+
+								getHeroes(): Observable<Hero[]> {
+								  return of(HEROES);
+								}
+							</code></pre>
+						</section>
+						<section>
+							<h3>Subscribe innerhalb der HerosComponent</h3>
+							<pre><code class="js" data-trim data-noescape>
+								getHeroes(): void {
+								  this.heroService.getHeroes()
+								      .subscribe(heroes => this.heroes = heroes);
+								}
+							</code></pre>
+						</section>
+						<section>
+							<iframe style="width: 100%; height: 600px" src="https://stackblitz.com/angular/aqjjkjbbabj?ctl=1&embed=1&file=src/main.ts" frameborder="0" allowfullscren="allowfullscren"></iframe>
+						</section>
+						<section>
+							<h3>Routing</h3>
+							<small>Innerhalb des Frontends möchten wir zwischen 2 Views wechseln: Ein Dashboard, sowie die Liste der Heroes. Aber wozu der Router?</small><br/>
+							<small>
+								<ul>
+									<li>Bei der Eingabe der URL navigiert der Browser auf die entsprechende Seite</li>
+									<li>Auf Links innerhlab der App klicken und auf die entsprechende Seite geleitet werden</li>
+									<li>Vor- und Zurückbutton verwenden um die Browser History zu verwenden</li>
+								</ul>
+							</small>
+							<pre><code class="js" data-trim data-noescape>
+								import { HeroesComponent }      from './heroes/heroes.component';
+
+								const routes: Routes = [
+								  { path: 'heroes', component: HeroesComponent }
+								];
+							</code></pre>
+						</section>
+						<section>
+							<h3>Einzelne Routes</h3>
+							<small>Eine typische Route besteht aus zwei Teilen:</small><br/>
+							<small>
+								<ol>
+									<li><code>path</code>: Ein String der angibt auf welche URL eine Route hört</li>
+									<li><code>component</code>: Die Komponente die erstellt werden soll, beim Aufruf jener URL</li>
+								</ol>
+							</small>
+						</section>
+						<section>
+							<h3>Routing Module</h3>
+							<pre><code class="js" data-trim data-noescape>
+								import { NgModule }             from '@angular/core';
+								import { RouterModule, Routes } from '@angular/router';
+								import { HeroesComponent }      from './heroes/heroes.component';
+								import { DashboardComponent }   from './dashboard/dashboard.component';
+								import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
+
+								const routes: Routes = [
+								  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+								  { path: 'dashboard', component: DashboardComponent },
+								  { path: 'detail/:id', component: HeroDetailComponent },
+								  { path: 'heroes', component: HeroesComponent }
+								];
+
+								@NgModule({
+								  imports: [ RouterModule.forRoot(routes) ],
+								  exports: [ RouterModule ]
+								})
+								export class AppRoutingModule {}
+							</code></pre>
+						</section>
+						<section>
+							<h3>App component anpassen</h3>
+							<pre><code class="html" data-trim>
+								<h1>{{title}}</h1>
+								<router-outlet></router-outlet>
+								<app-messages></app-messages>
+							</code></pre>
+							<small>Das Element <code>router-outlet</code> sagt dem Router wo die "gerouteten" Views angezeigt werden sollen.</small>
+						</section>
+						<section>
+							<h3>Navigation Link</h3>
+							<pre><code class="html" data-trim>
+								<h1>{{title}}</h1>
+								<nav>
+								  <a routerLink="/heroes">Heroes</a>
+								</nav>
+								<router-outlet></router-outlet>
+								<app-messages></app-messages>
+							</code></pre>
+							<small>Beim <code>routerLink</code>-Attribut handelt es sich um eine Angular-Directive, die user-clicks in Router Navigation umwandelt</small>
+						</section>
+						<section>
+							<iframe style="width: 100%; height: 600px" src="https://stackblitz.com/angular/ryjjeaanvbr?ctl=1&embed=1&file=src/main.ts" frameborder="0" allowfullscren="allowfullscren"></iframe>
+						</section>
 					</section>
+				</section>
+				<section>
+					<h2>Weitere Links</h2>
+					<ul>
+						<li><a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754" target="_blank">The introduction to Reactive Programming you've been missing</a></li>
+					</ul>
 				</section>
 			</div>
 		</div>
